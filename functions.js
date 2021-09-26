@@ -39,8 +39,7 @@ function numberOfVideos(channel) {
  * BONUS: use iteration method `.some()`
  ****************************************************************/
 function channelHasVideo(videoTitle, channel) {
-  const matches = videoTitle.some (channelHasVideo => channel.name)
-  return videoTitle;
+  return channel.videos.some(video => video.title === videoTitle);
 };
 // console.log(channelHasVideo("The Universal S", channels[0]));
 // console.log(channelHasVideo("The Universal S", channels[1]));
@@ -54,7 +53,7 @@ function channelHasVideo(videoTitle, channel) {
  * BONUS: use iteration method `.find()`
  ****************************************************************/
 function getChannelByName(channelName, channels) {
-  // Your code here
+ return channels.find((channel) => channel.name === channelName);
 }
 // console.log(getChannelByName("PowerfulJRE", channels))
 
@@ -67,7 +66,9 @@ function getChannelByName(channelName, channels) {
  * BONUS: use iteration methods `.find()` and `.some()`
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
-  // Your code here
+  return channels.find(channel => {
+    return channelHasVideo(videoTitle, channel);
+  });
 }
 // console.log(getChannelByVideoTitle("The Universal S", channels));
 
@@ -80,7 +81,7 @@ function getChannelByVideoTitle(videoTitle, channels) {
  * Hint: use string method `.includes()` and iteration method `.filter()`
  ****************************************************************/
 function searchChannels(query, channels) {
-  // Your code here
+  return channels.filter(channel => channel.name.include(query) || channel.description.include(query));
 }
 // console.log(searchChannels("the", channels))
 
